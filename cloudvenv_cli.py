@@ -7,7 +7,7 @@ import tarfile
 import urllib.request
 from pathlib import Path
 
-REPO_BASE_URL = "https://raw.githubusercontent.com/your-username/cloudvenv/main"
+REPO_BASE_URL = "https://raw.githubusercontent.com/deepmarathe/cloudvenv/main"
 DEFAULT_ENV = "top-packages-env"
 VENV_DIR = Path.home() / ".cloudvenv"
 VENV_METADATA = f"{REPO_BASE_URL}/venvs/metadata.json"
