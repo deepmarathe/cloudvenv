@@ -1,0 +1,29 @@
+name: Test CloudVenv Installer
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test-bootstrap:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v3
+
+      - name: Install Dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y python3-pip
+
+      - name: Run CloudVenv Bootstrap
+        run: |
+          curl -sL https://raw.githubusercontent.com/deepmarathe/cloudvenv/main/bootstrap.sh | bash
+
+      - name: Test Python Packages
+        run: |
+          source ~/.cloudvenv/top-packages-env/bin/activate
+          python -c "import numpy, pandas; print(numpy.__version__, pandas.__version__)"
